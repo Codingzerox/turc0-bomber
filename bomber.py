@@ -1,3 +1,8 @@
+import requests
+import time
+import os
+import random
+from colorama import Fore, Style, init
 import subprocess, sys, os
 
 try:
@@ -852,8 +857,51 @@ def send(number, amount, worker_amount):
     failed_sends = 0
     restart()
 
-def watermark():
-    print("SMS Tool | developed by Emolox Community")
+init(autoreset=True)
+
+# ANİMASYONLU RENKLİ BANNER SİSTEMİ
+banners = [
+    r"""
+  █████                                     █████   
+ ░░███                                    ███░░░███ 
+ ███████   █████ ████ ████████   ██████  ███   ░░███
+░░░███░   ░░███ ░███ ░░███░░███ ███░░███░███    ░███
+  ░███     ░███ ░███  ░███ ░░░ ░███ ░░░ ░███    ░███
+  ░███ ███ ░███ ░███  ░███     ░███  ███░░███   ███ 
+  ░░█████  ░░████████ █████    ░░██████  ░░░█████░  
+   ░░░░░    ░░░░░░░░ ░░░░░      ░░░░░░     ░░░░░░   
+""",
+    r"""
+     __                  ____ 
+  / /___  ____________/ __ \
+ / __/ / / / ___/ ___/ / / /
+/ /_/ /_/ / /  / /__/ /_/ / 
+\__/\__,_/_/   \___/\____/  
+""",
+    r"""
+_____                    _______ 
+__  /____  ________________  __ \
+_  __/  / / /_  ___/  ___/  / / /
+/ /_ / /_/ /_  /   / /__ / /_/ / 
+\__/ \__,_/ /_/    \___/ \____/  
+"""
+]
+
+colors = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.CYAN, Fore.MAGENTA, Fore.BLUE]
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def show_banner():
+    for _ in range(6):  # 3 saniyelik animasyon (6*0.5sn)
+        clear()
+        color = random.choice(colors)
+        banner = random.choice(banners)
+        print(color + banner)
+        time.sleep(0.5)
+
+# 🔥 Program başında göster
+show_banner()
 
 def get_number():
     global clear
